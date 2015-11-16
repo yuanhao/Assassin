@@ -23,10 +23,12 @@ class VictimViewController: UIViewController {
     var socket: SocketIOClient!
     var victimViewModel: VictimViewModel!
     let locationManager = CLLocationManager()
+    var overlayView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.initViews()
         self.setupSocketIO()
         self.setupLocationManager()
     }
@@ -35,6 +37,18 @@ class VictimViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    func initViews() {
+        self.overlayView = UIView(frame: self.view.bounds)
+        self.overlayView.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.5)
+        let overlayLabel = UILabel()
+        overlayLabel.text = "Run!"
+        overlayLabel.font = overlayLabel.font.fontWithSize(100)
+        overlayLabel.textColor = UIColor.whiteColor()
+        overlayLabel.sizeToFit()
+        overlayLabel.frame.origin = CGPoint(x: (self.view.bounds.width - overlayLabel.frame.width) / 2.0, y: (self.view.bounds.height - overlayLabel.frame.height) / 2.0)
+        self.overlayView.addSubview(overlayLabel)
+    }
+
     func setupSocketIO() {
         self.socket = SocketIOClient(socketURL: "127.0.0.1:3001", options: [.Log(true), .ForcePolling(true)])
         self.socket.on("connect", callback: { data, ack in
@@ -80,7 +94,13 @@ class VictimViewController: UIViewController {
                         self.victimViewModel.model.hitPoints.value = damage
                         AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
                         
-                        // maybe a red overlay view here for warning
+                        // red overlay view, with run on it
+                        self.view.addSubview(self.overlayView)
+                        // Delay 0.5 seconds
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { () -> Void in
+                            // remove red overlay view
+                            self.overlayView.removeFromSuperview()
+                        }
                     }
                 }
             }
