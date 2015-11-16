@@ -24,6 +24,7 @@ class AssassinViewController: UIViewController {
     var assassinViewModel: AssassinViewModel!
     var socket: SocketIOClient!
     let locationManager = CLLocationManager()
+    var victimMapAnnotations: [String: VictimMapAnnotation] = [String: VictimMapAnnotation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +58,29 @@ class AssassinViewController: UIViewController {
             }).bindTo(self.weaponLoadLabel.rx_text).addDisposableTo(self.disposeBag)
             
         })
+        
+        self.socket.on("updateLocation", callback: { data, ack in
+            if data.count > 0 {
+                let victimSocketId = data[0]["socketId"] as! String
+                let victimLat = (data[0]["lat"] as! NSString).doubleValue
+                let victimLng = (data[0]["lng"] as! NSString).doubleValue
+                let newLocation = CLLocation(latitude: victimLat, longitude: victimLng)
+                
+                if let victimMapAnnotation = self.victimMapAnnotations[victimSocketId] {
+                    victimMapAnnotation.model.location.value = newLocation
+                } else {
+                    let victim = Victim(socketId: victimSocketId)
+                    victim.location.value = newLocation
+                    
+                    let victimMapAnnoation = VictimMapAnnotation(model: victim)
+                    self.victimMapAnnotations[victimSocketId] = victimMapAnnoation
+                    self.mapView.addAnnotation(victimMapAnnoation)
+                }
+            }
+            
+        })
+        
+        self.socket.connect()
     }
     
     func setupLocationManager() {

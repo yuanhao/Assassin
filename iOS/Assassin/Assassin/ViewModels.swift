@@ -10,6 +10,7 @@
 import Foundation
 import UIKit
 import CoreLocation
+import MapKit
 import RxSwift
 
 
@@ -97,3 +98,27 @@ class AssassinViewModel {
     }
 }
 
+
+class VictimMapAnnotation: NSObject, MKAnnotation {
+    dynamic var coordinate: CLLocationCoordinate2D
+    var title: String?
+    var info: String?
+    
+    var model: Victim
+    let disposeBag = DisposeBag()
+    
+    init(model: Victim) {
+        self.title = ""
+        self.coordinate = model.location.value!.coordinate
+        self.info = model.socketId
+        self.model = model
+        
+        super.init()
+        
+        self.model.location.subscribeNext({ loc in
+            if let newLoc = loc {
+                self.coordinate = newLoc.coordinate
+            }
+        }).addDisposableTo(self.disposeBag)
+    }
+}
