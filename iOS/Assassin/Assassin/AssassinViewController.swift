@@ -39,10 +39,8 @@ class AssassinViewController: UIViewController {
     }
 
     func initViews() {
-        /*
         self.mapView.delegate = self
         self.mapView.showsPointsOfInterest = true
-        */
     }
     
     func setupSocketIO() {
@@ -110,3 +108,34 @@ class AssassinViewController: UIViewController {
     }
 
 }
+
+
+extension AssassinViewController: MKMapViewDelegate {
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+        
+        if let annotation = annotation as? VictimMapAnnotation {
+            let reuseId = "victimPlace"
+            var annotationView = self.mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId)
+            if annotationView == nil {
+                annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+                if annotation.model.hitPoints.value > 0 {
+                    annotationView!.image = UIImage(named: "VictimAlivePin")
+                } else {
+                    annotationView!.image = UIImage(named: "VictimDeadPin")
+                }
+            } else {
+                annotationView!.annotation = annotation
+            }
+            
+            return annotationView
+        }
+        return nil
+    }
+}
+
+
+
+
