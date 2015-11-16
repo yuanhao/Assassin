@@ -50,7 +50,7 @@ class VictimViewController: UIViewController {
     }
 
     func setupSocketIO() {
-        self.socket = SocketIOClient(socketURL: "127.0.0.1:3001", options: [.Log(true), .ForcePolling(true)])
+        self.socket = SocketIOClient(socketURL: "46.101.187.63:3001", options: [.Log(true), .ForcePolling(true)])
         self.socket.on("connect", callback: { data, ack in
             print(data)
             print(ack)
