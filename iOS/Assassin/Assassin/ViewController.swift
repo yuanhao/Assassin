@@ -69,14 +69,17 @@ class VictimViewController: UIViewController {
             
             self.victimViewModel.aliveStatus.subscribeNext({ status in
                 if status == VictimAliveStatus.DEAD {
-                    let alert = UIAlertController(title: "Restart the adventure?", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+                    let alert = UIAlertController(title: "Game Over", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
                     let okAction = UIAlertAction(title: "Sure", style: UIAlertActionStyle.Default, handler: {(alert: UIAlertAction!) in
                         
                         self.socket.disconnect()
                         
                         let window = UIApplication.sharedApplication().windows.first
-                        window!.rootViewController = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("VictimViewController")
-                        
+                        if arc4random_uniform(2) == 0 {
+                            window!.rootViewController = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("VictimVC")
+                        } else {
+                            window!.rootViewController = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("AssassinVC")
+                        }
                     })
                     
                     alert.addAction(okAction)

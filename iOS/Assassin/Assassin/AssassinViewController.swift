@@ -28,6 +28,8 @@ class AssassinViewController: UIViewController {
     var victimMapAnnotations: [String: VictimMapAnnotation] = [String: VictimMapAnnotation]()
     var bleCentralManager: CBCentralManager!
     var blePeripherals: [String: CBPeripheral] = [String: CBPeripheral]()
+    var huntingTimer: NSTimer!
+    var huntingTime: Int = 120
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +47,8 @@ class AssassinViewController: UIViewController {
         self.mapView.delegate = self
         self.mapView.showsPointsOfInterest = true
         
-        self.weaponReloadButton.enabled = true
+        // debug
+        //self.weaponReloadButton.enabled = true
 
         self.weaponReloadButton.rx_tap.subscribeNext({ _ in
             
@@ -64,8 +67,32 @@ class AssassinViewController: UIViewController {
             self.presentViewController(alert, animated: true, completion: nil)
             
         }).addDisposableTo(self.disposeBag)
+        
+        // hunting timer
+        self.huntingTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "timerUpdate:", userInfo: "", repeats: true)
     }
     
+    func timerUpdate(sender: NSTimer) {
+        self.huntingTime -= 1
+        self.assassinTime.text = "\(self.huntingTime)"
+        if self.huntingTime <= 0 {
+            sender.invalidate()
+
+            let alert = UIAlertController(title: "Game Over", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+            let okAction = UIAlertAction(title: "Sure", style: UIAlertActionStyle.Default, handler: {(alert: UIAlertAction!) in
+                
+                self.socket.disconnect()
+                
+                let window = UIApplication.sharedApplication().windows.first
+                window!.rootViewController = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("VictimVC")
+                
+            })
+            
+            alert.addAction(okAction)
+            self.presentViewController(alert, animated: true, completion:{})
+        }
+    }
+
     func setupSocketIO() {
         self.socket = SocketIOClient(socketURL: "127.0.0.1:3001", options: [.Log(true), .ForcePolling(true)])
         
