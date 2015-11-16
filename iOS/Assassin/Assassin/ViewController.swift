@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import CoreLocation
+import AudioToolbox
 
 
 class VictimViewController: UIViewController {
@@ -52,6 +53,37 @@ class VictimViewController: UIViewController {
                 $0.stateImage()
             }).bindTo(self.victimStatusImage.rx_image).addDisposableTo(self.disposeBag)
             
+            self.victimViewModel.aliveStatus.subscribeNext({ status in
+                if status == VictimAliveStatus.DEAD {
+                    let alert = UIAlertController(title: "Restart the adventure?", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+                    let okAction = UIAlertAction(title: "Sure", style: UIAlertActionStyle.Default, handler: {(alert: UIAlertAction!) in
+                        
+                        self.socket.disconnect()
+                        
+                        let window = UIApplication.sharedApplication().windows.first
+                        window!.rootViewController = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("VictimViewController")
+                        
+                    })
+                    
+                    alert.addAction(okAction)
+                    self.presentViewController(alert, animated: true, completion:{})
+                }
+            }).addDisposableTo(self.disposeBag)
+            
+        })
+        
+        self.socket.on("damage", callback: { data, ack in
+            if data.count > 0 {
+                if let socketId = data[0]["socketId"] as? String {
+                    let damage = (data[0]["newHP"] as! NSString).doubleValue
+                    if socketId == self.socket.sid {
+                        self.victimViewModel.model.hitPoints.value = damage
+                        AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
+                        
+                        // maybe a red overlay view here for warning
+                    }
+                }
+            }
         })
         
         /* Debug purpose

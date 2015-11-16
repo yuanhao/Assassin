@@ -41,6 +41,13 @@ io.on('connection', function(socket) {
         });
     });
 
+    socket.on('damage', function(msg) {
+        io.emit('damage', msg);
+        console.log('damage: ');
+        console.log(msg);
+        console.log('\n\n');
+    });
+
 });
 
 http.listen(3001, function() {
