@@ -74,5 +74,26 @@ class VictimViewModel {
 }
 
 
-
+class AssassinViewModel {
+    let disposeBag = DisposeBag()
+    var currentWeaponLoad: PublishSubject<Int> = PublishSubject<Int>()
+    var model: Killer {
+        didSet {
+            self.currentWeaponLoad.onNext(self.model.weaponLoad.value)
+        }
+    }
+    
+    init(model: Killer) {
+        self.model = model
+        self.bindModel()
+    }
+    
+    func bindModel() {
+        self.model.weaponLoad.subscribeNext({ load in
+            
+            self.currentWeaponLoad.onNext(load)
+            
+        }).addDisposableTo(self.disposeBag)
+    }
+}
 
