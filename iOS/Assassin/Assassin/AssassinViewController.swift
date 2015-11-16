@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import CoreBluetooth
 import RxSwift
 import RxCocoa
 
@@ -25,13 +26,15 @@ class AssassinViewController: UIViewController {
     var socket: SocketIOClient!
     let locationManager = CLLocationManager()
     var victimMapAnnotations: [String: VictimMapAnnotation] = [String: VictimMapAnnotation]()
-    
+    var bleCentralManager: CBCentralManager!
+    var blePeripherals: [String: CBPeripheral] = [String: CBPeripheral]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initViews()
         self.setupSocketIO()
         self.setupLocationManager()
-
+        self.setupBluetooth()
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,6 +44,26 @@ class AssassinViewController: UIViewController {
     func initViews() {
         self.mapView.delegate = self
         self.mapView.showsPointsOfInterest = true
+        
+        self.weaponReloadButton.enabled = true
+
+        self.weaponReloadButton.rx_tap.subscribeNext({ _ in
+            
+            let alert: UIAlertController = UIAlertController(title: "Reload Weapon", message: "Pair with a bluetooth device to reload the weapon", preferredStyle: UIAlertControllerStyle.ActionSheet)
+            for (k, v) in self.blePeripherals {
+                let action = UIAlertAction(title: k, style: UIAlertActionStyle.Default, handler: { alert in
+                    self.bleCentralManager.connectPeripheral(v, options: nil)
+                    print("connecting \(k)")
+                })
+                alert.addAction(action)
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: {
+                (alert: UIAlertAction) in
+            })
+            alert.addAction(cancelAction)
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        }).addDisposableTo(self.disposeBag)
     }
     
     func setupSocketIO() {
@@ -157,6 +180,10 @@ class AssassinViewController: UIViewController {
             self.mapView.setRegion(coordinateRegion, animated: true)
         }
     }
+    
+    func setupBluetooth() {
+        self.bleCentralManager = CBCentralManager(delegate: self, queue: dispatch_get_main_queue())
+    }
 
 }
 
@@ -261,6 +288,33 @@ extension AssassinViewController: MKMapViewDelegate {
     }
 }
 
+extension AssassinViewController: CBCentralManagerDelegate {
+    func centralManagerDidUpdateState(central: CBCentralManager) {
+        switch central.state {
+        case CBCentralManagerState.PoweredOn:
+            self.bleCentralManager.scanForPeripheralsWithServices(nil, options: nil)
 
+        default:
+            print(central.state)
+            break
+        }
+    }
+    
+    func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
+        if let name = peripheral.name {
+            print("\(name) discovered")
+            self.blePeripherals[name] = peripheral
+        }
+    }
+    
+    func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
+        if peripheral.state == CBPeripheralState.Connected {
+            print("connected with \(peripheral.name)")
+            if let viewModel = self.assassinViewModel {
+                viewModel.model.weaponLoad.value = Killer.maxWeaponLoad
+            }
+        }
+    }
+}
 
 
