@@ -1,0 +1,845 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EF8B576F1BFA25CE00A948DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B576E1BFA25CE00A948DE /* AppDelegate.swift */; };
+		EF8B57711BFA25CE00A948DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B57701BFA25CE00A948DE /* ViewController.swift */; };
+		EF8B57741BFA25CE00A948DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF8B57721BFA25CE00A948DE /* Main.storyboard */; };
+		EF8B57761BFA25CE00A948DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF8B57751BFA25CE00A948DE /* Assets.xcassets */; };
+		EF8B57791BFA25CE00A948DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF8B57771BFA25CE00A948DE /* LaunchScreen.storyboard */; };
+		EF8B57841BFA25CE00A948DE /* AssassinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B57831BFA25CE00A948DE /* AssassinTests.swift */; };
+		EF8B578F1BFA25CE00A948DE /* AssassinUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B578E1BFA25CE00A948DE /* AssassinUITests.swift */; };
+		EF8B57F21BFA27C400A948DE /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF8B57D91BFA279100A948DE /* RxSwift.framework */; };
+		EF8B57F31BFA27C400A948DE /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EF8B57D91BFA279100A948DE /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EF8B57F61BFA27C400A948DE /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF8B57E11BFA279100A948DE /* RxCocoa.framework */; };
+		EF8B57F71BFA27C400A948DE /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EF8B57E11BFA279100A948DE /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EF8B580F1BFA282500A948DE /* SocketAckEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B57FC1BFA282500A948DE /* SocketAckEmitter.swift */; };
+		EF8B58101BFA282500A948DE /* SocketAckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B57FD1BFA282500A948DE /* SocketAckManager.swift */; };
+		EF8B58111BFA282500A948DE /* SocketAnyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B57FE1BFA282500A948DE /* SocketAnyEvent.swift */; };
+		EF8B58121BFA282500A948DE /* SocketEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B57FF1BFA282500A948DE /* SocketEngine.swift */; };
+		EF8B58131BFA282500A948DE /* SocketEngineClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B58001BFA282500A948DE /* SocketEngineClient.swift */; };
+		EF8B58141BFA282500A948DE /* SocketEnginePacketType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B58011BFA282500A948DE /* SocketEnginePacketType.swift */; };
+		EF8B58151BFA282500A948DE /* SocketEngineSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B58021BFA282500A948DE /* SocketEngineSpec.swift */; };
+		EF8B58161BFA282500A948DE /* SocketEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B58031BFA282500A948DE /* SocketEventHandler.swift */; };
+		EF8B58171BFA282500A948DE /* SocketFixUTF8.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B58041BFA282500A948DE /* SocketFixUTF8.swift */; };
+		EF8B58181BFA282500A948DE /* SocketIOClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B58051BFA282500A948DE /* SocketIOClient.swift */; };
+		EF8B58191BFA282500A948DE /* SocketIOClientOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B58061BFA282500A948DE /* SocketIOClientOption.swift */; };
+		EF8B581A1BFA282500A948DE /* SocketIOClientStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B58071BFA282500A948DE /* SocketIOClientStatus.swift */; };
+		EF8B581B1BFA282500A948DE /* SocketLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B58081BFA282500A948DE /* SocketLogger.swift */; };
+		EF8B581C1BFA282500A948DE /* SocketPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B58091BFA282500A948DE /* SocketPacket.swift */; };
+		EF8B581D1BFA282500A948DE /* SocketParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B580A1BFA282500A948DE /* SocketParser.swift */; };
+		EF8B581E1BFA282500A948DE /* SocketStringReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B580B1BFA282500A948DE /* SocketStringReader.swift */; };
+		EF8B581F1BFA282500A948DE /* SocketTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B580C1BFA282500A948DE /* SocketTypes.swift */; };
+		EF8B58201BFA282500A948DE /* SwiftRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B580D1BFA282500A948DE /* SwiftRegex.swift */; };
+		EF8B58211BFA282500A948DE /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B580E1BFA282500A948DE /* WebSocket.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EF8B57801BFA25CE00A948DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF8B57631BFA25CE00A948DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EF8B576A1BFA25CE00A948DE;
+			remoteInfo = Assassin;
+		};
+		EF8B578B1BFA25CE00A948DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF8B57631BFA25CE00A948DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EF8B576A1BFA25CE00A948DE;
+			remoteInfo = Assassin;
+		};
+		EF8B57D81BFA279100A948DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF8B57C91BFA279100A948DE /* Rx.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C8A56AD71AD7424700B4673B;
+			remoteInfo = "RxSwift-iOS";
+		};
+		EF8B57DA1BFA279100A948DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF8B57C91BFA279100A948DE /* Rx.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C88BB8711B07E5ED0064D411;
+			remoteInfo = "RxSwift-OSX";
+		};
+		EF8B57DC1BFA279100A948DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF8B57C91BFA279100A948DE /* Rx.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2EA280C1BB9B5A200880ED3;
+			remoteInfo = "RxSwift-tvOS";
+		};
+		EF8B57DE1BFA279100A948DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF8B57C91BFA279100A948DE /* Rx.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C8F0C0021BBBFB8B001B112F;
+			remoteInfo = "RxSwift-watchOS";
+		};
+		EF8B57E01BFA279100A948DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF8B57C91BFA279100A948DE /* Rx.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C809396D1B8A71760088E94D;
+			remoteInfo = "RxCocoa-iOS";
+		};
+		EF8B57E21BFA279100A948DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF8B57C91BFA279100A948DE /* Rx.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C80939E71B8A71840088E94D;
+			remoteInfo = "RxCocoa-OSX";
+		};
+		EF8B57E41BFA279100A948DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF8B57C91BFA279100A948DE /* Rx.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2138C751BB9BE9800339B5C;
+			remoteInfo = "RxCocoa-tvOS";
+		};
+		EF8B57E61BFA279100A948DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF8B57C91BFA279100A948DE /* Rx.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C8F0C04B1BBBFBB9001B112F;
+			remoteInfo = "RxCocoa-watchOS";
+		};
+		EF8B57E81BFA279100A948DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF8B57C91BFA279100A948DE /* Rx.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C8093BC71B8A71F00088E94D;
+			remoteInfo = "RxBlocking-iOS";
+		};
+		EF8B57EA1BFA279100A948DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF8B57C91BFA279100A948DE /* Rx.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C8093C451B8A71FC0088E94D;
+			remoteInfo = "RxBlocking-OSX";
+		};
+		EF8B57EC1BFA279100A948DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF8B57C91BFA279100A948DE /* Rx.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2EBEB811BB9B99D003A27DC;
+			remoteInfo = "RxBlocking-tvOS";
+		};
+		EF8B57EE1BFA279100A948DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF8B57C91BFA279100A948DE /* Rx.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C8F0C0581BBBFBCE001B112F;
+			remoteInfo = "RxBlocking-watchOS";
+		};
+		EF8B57F41BFA27C400A948DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF8B57C91BFA279100A948DE /* Rx.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = C8A56AD61AD7424700B4673B;
+			remoteInfo = "RxSwift-iOS";
+		};
+		EF8B57F81BFA27C400A948DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF8B57C91BFA279100A948DE /* Rx.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = C80938F51B8A71760088E94D;
+			remoteInfo = "RxCocoa-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EF8B57FA1BFA27C400A948DE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EF8B57F71BFA27C400A948DE /* RxCocoa.framework in Embed Frameworks */,
+				EF8B57F31BFA27C400A948DE /* RxSwift.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		EF8B576B1BFA25CE00A948DE /* Assassin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assassin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF8B576E1BFA25CE00A948DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EF8B57701BFA25CE00A948DE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EF8B57731BFA25CE00A948DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EF8B57751BFA25CE00A948DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EF8B57781BFA25CE00A948DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EF8B577A1BFA25CE00A948DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF8B577F1BFA25CE00A948DE /* AssassinTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AssassinTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF8B57831BFA25CE00A948DE /* AssassinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssassinTests.swift; sourceTree = "<group>"; };
+		EF8B57851BFA25CE00A948DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF8B578A1BFA25CE00A948DE /* AssassinUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AssassinUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF8B578E1BFA25CE00A948DE /* AssassinUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssassinUITests.swift; sourceTree = "<group>"; };
+		EF8B57901BFA25CE00A948DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF8B57C91BFA279100A948DE /* Rx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Rx.xcodeproj; path = Frameworks/RxSwift/Rx.xcodeproj; sourceTree = "<group>"; };
+		EF8B57FC1BFA282500A948DE /* SocketAckEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckEmitter.swift; sourceTree = "<group>"; };
+		EF8B57FD1BFA282500A948DE /* SocketAckManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckManager.swift; sourceTree = "<group>"; };
+		EF8B57FE1BFA282500A948DE /* SocketAnyEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAnyEvent.swift; sourceTree = "<group>"; };
+		EF8B57FF1BFA282500A948DE /* SocketEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEngine.swift; sourceTree = "<group>"; };
+		EF8B58001BFA282500A948DE /* SocketEngineClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEngineClient.swift; sourceTree = "<group>"; };
+		EF8B58011BFA282500A948DE /* SocketEnginePacketType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEnginePacketType.swift; sourceTree = "<group>"; };
+		EF8B58021BFA282500A948DE /* SocketEngineSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEngineSpec.swift; sourceTree = "<group>"; };
+		EF8B58031BFA282500A948DE /* SocketEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEventHandler.swift; sourceTree = "<group>"; };
+		EF8B58041BFA282500A948DE /* SocketFixUTF8.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketFixUTF8.swift; sourceTree = "<group>"; };
+		EF8B58051BFA282500A948DE /* SocketIOClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOClient.swift; sourceTree = "<group>"; };
+		EF8B58061BFA282500A948DE /* SocketIOClientOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOClientOption.swift; sourceTree = "<group>"; };
+		EF8B58071BFA282500A948DE /* SocketIOClientStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOClientStatus.swift; sourceTree = "<group>"; };
+		EF8B58081BFA282500A948DE /* SocketLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketLogger.swift; sourceTree = "<group>"; };
+		EF8B58091BFA282500A948DE /* SocketPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketPacket.swift; sourceTree = "<group>"; };
+		EF8B580A1BFA282500A948DE /* SocketParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketParser.swift; sourceTree = "<group>"; };
+		EF8B580B1BFA282500A948DE /* SocketStringReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketStringReader.swift; sourceTree = "<group>"; };
+		EF8B580C1BFA282500A948DE /* SocketTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketTypes.swift; sourceTree = "<group>"; };
+		EF8B580D1BFA282500A948DE /* SwiftRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftRegex.swift; sourceTree = "<group>"; };
+		EF8B580E1BFA282500A948DE /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EF8B57681BFA25CE00A948DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF8B57F61BFA27C400A948DE /* RxCocoa.framework in Frameworks */,
+				EF8B57F21BFA27C400A948DE /* RxSwift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF8B577C1BFA25CE00A948DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF8B57871BFA25CE00A948DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EF8B57621BFA25CE00A948DE = {
+			isa = PBXGroup;
+			children = (
+				EF8B576D1BFA25CE00A948DE /* Assassin */,
+				EF8B57821BFA25CE00A948DE /* AssassinTests */,
+				EF8B578D1BFA25CE00A948DE /* AssassinUITests */,
+				EF8B579C1BFA262A00A948DE /* Frameworks */,
+				EF8B576C1BFA25CE00A948DE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EF8B576C1BFA25CE00A948DE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EF8B576B1BFA25CE00A948DE /* Assassin.app */,
+				EF8B577F1BFA25CE00A948DE /* AssassinTests.xctest */,
+				EF8B578A1BFA25CE00A948DE /* AssassinUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EF8B576D1BFA25CE00A948DE /* Assassin */ = {
+			isa = PBXGroup;
+			children = (
+				EF8B576E1BFA25CE00A948DE /* AppDelegate.swift */,
+				EF8B57701BFA25CE00A948DE /* ViewController.swift */,
+				EF8B57721BFA25CE00A948DE /* Main.storyboard */,
+				EF8B57751BFA25CE00A948DE /* Assets.xcassets */,
+				EF8B57771BFA25CE00A948DE /* LaunchScreen.storyboard */,
+				EF8B577A1BFA25CE00A948DE /* Info.plist */,
+			);
+			path = Assassin;
+			sourceTree = "<group>";
+		};
+		EF8B57821BFA25CE00A948DE /* AssassinTests */ = {
+			isa = PBXGroup;
+			children = (
+				EF8B57831BFA25CE00A948DE /* AssassinTests.swift */,
+				EF8B57851BFA25CE00A948DE /* Info.plist */,
+			);
+			path = AssassinTests;
+			sourceTree = "<group>";
+		};
+		EF8B578D1BFA25CE00A948DE /* AssassinUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EF8B578E1BFA25CE00A948DE /* AssassinUITests.swift */,
+				EF8B57901BFA25CE00A948DE /* Info.plist */,
+			);
+			path = AssassinUITests;
+			sourceTree = "<group>";
+		};
+		EF8B579C1BFA262A00A948DE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EF8B57FB1BFA282500A948DE /* SocketIOClientSwift */,
+				EF8B57C91BFA279100A948DE /* Rx.xcodeproj */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EF8B57CA1BFA279100A948DE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EF8B57D91BFA279100A948DE /* RxSwift.framework */,
+				EF8B57DB1BFA279100A948DE /* RxSwift.framework */,
+				EF8B57DD1BFA279100A948DE /* RxSwift.framework */,
+				EF8B57DF1BFA279100A948DE /* RxSwift.framework */,
+				EF8B57E11BFA279100A948DE /* RxCocoa.framework */,
+				EF8B57E31BFA279100A948DE /* RxCocoa.framework */,
+				EF8B57E51BFA279100A948DE /* RxCocoa.framework */,
+				EF8B57E71BFA279100A948DE /* RxCocoa.framework */,
+				EF8B57E91BFA279100A948DE /* RxBlocking.framework */,
+				EF8B57EB1BFA279100A948DE /* RxBlocking.framework */,
+				EF8B57ED1BFA279100A948DE /* RxBlocking.framework */,
+				EF8B57EF1BFA279100A948DE /* RxBlocking.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EF8B57FB1BFA282500A948DE /* SocketIOClientSwift */ = {
+			isa = PBXGroup;
+			children = (
+				EF8B57FC1BFA282500A948DE /* SocketAckEmitter.swift */,
+				EF8B57FD1BFA282500A948DE /* SocketAckManager.swift */,
+				EF8B57FE1BFA282500A948DE /* SocketAnyEvent.swift */,
+				EF8B57FF1BFA282500A948DE /* SocketEngine.swift */,
+				EF8B58001BFA282500A948DE /* SocketEngineClient.swift */,
+				EF8B58011BFA282500A948DE /* SocketEnginePacketType.swift */,
+				EF8B58021BFA282500A948DE /* SocketEngineSpec.swift */,
+				EF8B58031BFA282500A948DE /* SocketEventHandler.swift */,
+				EF8B58041BFA282500A948DE /* SocketFixUTF8.swift */,
+				EF8B58051BFA282500A948DE /* SocketIOClient.swift */,
+				EF8B58061BFA282500A948DE /* SocketIOClientOption.swift */,
+				EF8B58071BFA282500A948DE /* SocketIOClientStatus.swift */,
+				EF8B58081BFA282500A948DE /* SocketLogger.swift */,
+				EF8B58091BFA282500A948DE /* SocketPacket.swift */,
+				EF8B580A1BFA282500A948DE /* SocketParser.swift */,
+				EF8B580B1BFA282500A948DE /* SocketStringReader.swift */,
+				EF8B580C1BFA282500A948DE /* SocketTypes.swift */,
+				EF8B580D1BFA282500A948DE /* SwiftRegex.swift */,
+				EF8B580E1BFA282500A948DE /* WebSocket.swift */,
+			);
+			path = SocketIOClientSwift;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EF8B576A1BFA25CE00A948DE /* Assassin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF8B57931BFA25CF00A948DE /* Build configuration list for PBXNativeTarget "Assassin" */;
+			buildPhases = (
+				EF8B57671BFA25CE00A948DE /* Sources */,
+				EF8B57681BFA25CE00A948DE /* Frameworks */,
+				EF8B57691BFA25CE00A948DE /* Resources */,
+				EF8B57FA1BFA27C400A948DE /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EF8B57F51BFA27C400A948DE /* PBXTargetDependency */,
+				EF8B57F91BFA27C400A948DE /* PBXTargetDependency */,
+			);
+			name = Assassin;
+			productName = Assassin;
+			productReference = EF8B576B1BFA25CE00A948DE /* Assassin.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EF8B577E1BFA25CE00A948DE /* AssassinTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF8B57961BFA25CF00A948DE /* Build configuration list for PBXNativeTarget "AssassinTests" */;
+			buildPhases = (
+				EF8B577B1BFA25CE00A948DE /* Sources */,
+				EF8B577C1BFA25CE00A948DE /* Frameworks */,
+				EF8B577D1BFA25CE00A948DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EF8B57811BFA25CE00A948DE /* PBXTargetDependency */,
+			);
+			name = AssassinTests;
+			productName = AssassinTests;
+			productReference = EF8B577F1BFA25CE00A948DE /* AssassinTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EF8B57891BFA25CE00A948DE /* AssassinUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF8B57991BFA25CF00A948DE /* Build configuration list for PBXNativeTarget "AssassinUITests" */;
+			buildPhases = (
+				EF8B57861BFA25CE00A948DE /* Sources */,
+				EF8B57871BFA25CE00A948DE /* Frameworks */,
+				EF8B57881BFA25CE00A948DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EF8B578C1BFA25CE00A948DE /* PBXTargetDependency */,
+			);
+			name = AssassinUITests;
+			productName = AssassinUITests;
+			productReference = EF8B578A1BFA25CE00A948DE /* AssassinUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EF8B57631BFA25CE00A948DE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "Yuanhao Li";
+				TargetAttributes = {
+					EF8B576A1BFA25CE00A948DE = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+					EF8B577E1BFA25CE00A948DE = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = EF8B576A1BFA25CE00A948DE;
+					};
+					EF8B57891BFA25CE00A948DE = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = EF8B576A1BFA25CE00A948DE;
+					};
+				};
+			};
+			buildConfigurationList = EF8B57661BFA25CE00A948DE /* Build configuration list for PBXProject "Assassin" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EF8B57621BFA25CE00A948DE;
+			productRefGroup = EF8B576C1BFA25CE00A948DE /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = EF8B57CA1BFA279100A948DE /* Products */;
+					ProjectRef = EF8B57C91BFA279100A948DE /* Rx.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				EF8B576A1BFA25CE00A948DE /* Assassin */,
+				EF8B577E1BFA25CE00A948DE /* AssassinTests */,
+				EF8B57891BFA25CE00A948DE /* AssassinUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		EF8B57D91BFA279100A948DE /* RxSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RxSwift.framework;
+			remoteRef = EF8B57D81BFA279100A948DE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EF8B57DB1BFA279100A948DE /* RxSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RxSwift.framework;
+			remoteRef = EF8B57DA1BFA279100A948DE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EF8B57DD1BFA279100A948DE /* RxSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RxSwift.framework;
+			remoteRef = EF8B57DC1BFA279100A948DE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EF8B57DF1BFA279100A948DE /* RxSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RxSwift.framework;
+			remoteRef = EF8B57DE1BFA279100A948DE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EF8B57E11BFA279100A948DE /* RxCocoa.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RxCocoa.framework;
+			remoteRef = EF8B57E01BFA279100A948DE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EF8B57E31BFA279100A948DE /* RxCocoa.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RxCocoa.framework;
+			remoteRef = EF8B57E21BFA279100A948DE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EF8B57E51BFA279100A948DE /* RxCocoa.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RxCocoa.framework;
+			remoteRef = EF8B57E41BFA279100A948DE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EF8B57E71BFA279100A948DE /* RxCocoa.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RxCocoa.framework;
+			remoteRef = EF8B57E61BFA279100A948DE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EF8B57E91BFA279100A948DE /* RxBlocking.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RxBlocking.framework;
+			remoteRef = EF8B57E81BFA279100A948DE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EF8B57EB1BFA279100A948DE /* RxBlocking.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RxBlocking.framework;
+			remoteRef = EF8B57EA1BFA279100A948DE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EF8B57ED1BFA279100A948DE /* RxBlocking.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RxBlocking.framework;
+			remoteRef = EF8B57EC1BFA279100A948DE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EF8B57EF1BFA279100A948DE /* RxBlocking.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RxBlocking.framework;
+			remoteRef = EF8B57EE1BFA279100A948DE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EF8B57691BFA25CE00A948DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF8B57791BFA25CE00A948DE /* LaunchScreen.storyboard in Resources */,
+				EF8B57761BFA25CE00A948DE /* Assets.xcassets in Resources */,
+				EF8B57741BFA25CE00A948DE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF8B577D1BFA25CE00A948DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF8B57881BFA25CE00A948DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EF8B57671BFA25CE00A948DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF8B58141BFA282500A948DE /* SocketEnginePacketType.swift in Sources */,
+				EF8B58131BFA282500A948DE /* SocketEngineClient.swift in Sources */,
+				EF8B58171BFA282500A948DE /* SocketFixUTF8.swift in Sources */,
+				EF8B58181BFA282500A948DE /* SocketIOClient.swift in Sources */,
+				EF8B581D1BFA282500A948DE /* SocketParser.swift in Sources */,
+				EF8B58161BFA282500A948DE /* SocketEventHandler.swift in Sources */,
+				EF8B581E1BFA282500A948DE /* SocketStringReader.swift in Sources */,
+				EF8B58201BFA282500A948DE /* SwiftRegex.swift in Sources */,
+				EF8B58121BFA282500A948DE /* SocketEngine.swift in Sources */,
+				EF8B58151BFA282500A948DE /* SocketEngineSpec.swift in Sources */,
+				EF8B58111BFA282500A948DE /* SocketAnyEvent.swift in Sources */,
+				EF8B58101BFA282500A948DE /* SocketAckManager.swift in Sources */,
+				EF8B581A1BFA282500A948DE /* SocketIOClientStatus.swift in Sources */,
+				EF8B58211BFA282500A948DE /* WebSocket.swift in Sources */,
+				EF8B580F1BFA282500A948DE /* SocketAckEmitter.swift in Sources */,
+				EF8B581B1BFA282500A948DE /* SocketLogger.swift in Sources */,
+				EF8B57711BFA25CE00A948DE /* ViewController.swift in Sources */,
+				EF8B58191BFA282500A948DE /* SocketIOClientOption.swift in Sources */,
+				EF8B581F1BFA282500A948DE /* SocketTypes.swift in Sources */,
+				EF8B581C1BFA282500A948DE /* SocketPacket.swift in Sources */,
+				EF8B576F1BFA25CE00A948DE /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF8B577B1BFA25CE00A948DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF8B57841BFA25CE00A948DE /* AssassinTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF8B57861BFA25CE00A948DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF8B578F1BFA25CE00A948DE /* AssassinUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EF8B57811BFA25CE00A948DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EF8B576A1BFA25CE00A948DE /* Assassin */;
+			targetProxy = EF8B57801BFA25CE00A948DE /* PBXContainerItemProxy */;
+		};
+		EF8B578C1BFA25CE00A948DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EF8B576A1BFA25CE00A948DE /* Assassin */;
+			targetProxy = EF8B578B1BFA25CE00A948DE /* PBXContainerItemProxy */;
+		};
+		EF8B57F51BFA27C400A948DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "RxSwift-iOS";
+			targetProxy = EF8B57F41BFA27C400A948DE /* PBXContainerItemProxy */;
+		};
+		EF8B57F91BFA27C400A948DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "RxCocoa-iOS";
+			targetProxy = EF8B57F81BFA27C400A948DE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EF8B57721BFA25CE00A948DE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EF8B57731BFA25CE00A948DE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EF8B57771BFA25CE00A948DE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EF8B57781BFA25CE00A948DE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EF8B57911BFA25CF00A948DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EF8B57921BFA25CF00A948DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EF8B57941BFA25CF00A948DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = Assassin/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.yuanhao.Assassin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EF8B57951BFA25CF00A948DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = Assassin/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.yuanhao.Assassin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		EF8B57971BFA25CF00A948DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = AssassinTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.yuanhao.AssassinTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Assassin.app/Assassin";
+			};
+			name = Debug;
+		};
+		EF8B57981BFA25CF00A948DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = AssassinTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.yuanhao.AssassinTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Assassin.app/Assassin";
+			};
+			name = Release;
+		};
+		EF8B579A1BFA25CF00A948DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = AssassinUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.yuanhao.AssassinUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Assassin;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		EF8B579B1BFA25CF00A948DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = AssassinUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.yuanhao.AssassinUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Assassin;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EF8B57661BFA25CE00A948DE /* Build configuration list for PBXProject "Assassin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF8B57911BFA25CF00A948DE /* Debug */,
+				EF8B57921BFA25CF00A948DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF8B57931BFA25CF00A948DE /* Build configuration list for PBXNativeTarget "Assassin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF8B57941BFA25CF00A948DE /* Debug */,
+				EF8B57951BFA25CF00A948DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EF8B57961BFA25CF00A948DE /* Build configuration list for PBXNativeTarget "AssassinTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF8B57971BFA25CF00A948DE /* Debug */,
+				EF8B57981BFA25CF00A948DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EF8B57991BFA25CF00A948DE /* Build configuration list for PBXNativeTarget "AssassinUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF8B579A1BFA25CF00A948DE /* Debug */,
+				EF8B579B1BFA25CF00A948DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EF8B57631BFA25CE00A948DE /* Project object */;
+}

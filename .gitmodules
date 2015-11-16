@@ -1,0 +1,3 @@
+[submodule "iOS/Assassin/Frameworks/RxSwift"]
+	path = iOS/Assassin/Frameworks/RxSwift
+	url = https://github.com/ReactiveX/RxSwift.git
