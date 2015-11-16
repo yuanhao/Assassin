@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Demo</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://cdn.socket.io/socket.io-1.3.7.js"></script>
+        <script>
+            var socket = io('http://localhost:3001');
+            socket.on('connect', function() {
+                console.log("connected");
+            });
+        </script>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <div id="chat-input">
+            <input id="chat" placeholder="Type a message and press enter to get connected...">
+        </div>
+        <div id="messages-container">
+            <ul id="messages">
+            </ul>
+            <div id="gradient">
+            </div>
+        </div>
+    </body>
+</html>
