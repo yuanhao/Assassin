@@ -39,6 +39,7 @@
 		EF8B58211BFA282500A948DE /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B580E1BFA282500A948DE /* WebSocket.swift */; };
 		EF8B58231BFA2CC300A948DE /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B58221BFA2CC300A948DE /* Models.swift */; };
 		EF8B58251BFA2E9A00A948DE /* ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B58241BFA2E9A00A948DE /* ViewModels.swift */; };
+		EF8B58291BFA474C00A948DE /* AssassinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B58281BFA474C00A948DE /* AssassinViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -207,6 +208,7 @@
 		EF8B580E1BFA282500A948DE /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
 		EF8B58221BFA2CC300A948DE /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		EF8B58241BFA2E9A00A948DE /* ViewModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModels.swift; sourceTree = "<group>"; };
+		EF8B58281BFA474C00A948DE /* AssassinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssassinViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +270,7 @@
 				EF8B577A1BFA25CE00A948DE /* Info.plist */,
 				EF8B58221BFA2CC300A948DE /* Models.swift */,
 				EF8B58241BFA2E9A00A948DE /* ViewModels.swift */,
+				EF8B58281BFA474C00A948DE /* AssassinViewController.swift */,
 			);
 			path = Assassin;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				EF8B58121BFA282500A948DE /* SocketEngine.swift in Sources */,
 				EF8B58151BFA282500A948DE /* SocketEngineSpec.swift in Sources */,
 				EF8B58111BFA282500A948DE /* SocketAnyEvent.swift in Sources */,
+				EF8B58291BFA474C00A948DE /* AssassinViewController.swift in Sources */,
 				EF8B58231BFA2CC300A948DE /* Models.swift in Sources */,
 				EF8B58101BFA282500A948DE /* SocketAckManager.swift in Sources */,
 				EF8B581A1BFA282500A948DE /* SocketIOClientStatus.swift in Sources */,
