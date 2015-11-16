@@ -9,6 +9,8 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import CoreLocation
+
 
 class VictimViewController: UIViewController {
 
@@ -19,11 +21,13 @@ class VictimViewController: UIViewController {
 
     var socket: SocketIOClient!
     var victimViewModel: VictimViewModel!
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.setupSocketIO()
+        self.setupLocationManager()
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,12 +52,13 @@ class VictimViewController: UIViewController {
                 $0.stateImage()
             }).bindTo(self.victimStatusImage.rx_image).addDisposableTo(self.disposeBag)
             
-            
-            self.victimViewModel.model.hitPoints.value = 1
-            
         })
         
         self.socket.connect()
+    }
+    
+    func setupLocationManager() {
+        self.locationManager.requestAlwaysAuthorization()
     }
 }
 
