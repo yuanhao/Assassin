@@ -70,6 +70,17 @@ class AssassinViewController: UIViewController {
                     let victim = Victim(socketId: victimSocketId)
                     victim.location.value = newLocation
                     
+                    // subscribe the damage from assassin
+                    victim.hitPoints.subscribeNext({ hp in
+                        
+                        let newHP = max(0, hp)
+                        self.socket.emit("damage", [
+                            "socketId": victim.socketId,
+                            "newHP": newHP
+                        ])
+                        
+                    }).addDisposableTo(self.disposeBag)
+                    
                     let victimMapAnnoation = VictimMapAnnotation(model: victim)
                     self.victimMapAnnotations[victimSocketId] = victimMapAnnoation
                     self.mapView.addAnnotation(victimMapAnnoation)
