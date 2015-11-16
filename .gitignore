@@ -13,7 +13,7 @@ xcuserdata
 *.moved-aside
 DerivedData
 *.hmap
-*.ipa
+#*.ipa
 *.xcuserstate
 Pods/
 
