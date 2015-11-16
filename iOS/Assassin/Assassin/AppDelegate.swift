@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let rootViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("AssassinVC") as! AssassinViewController
         
         self.window!.rootViewController = rootViewController
-        print("Killer")
     
         return true
     }
