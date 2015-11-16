@@ -55,6 +55,15 @@ class AssassinViewController: UIViewController {
                 "\($0)"
             }).bindTo(self.weaponLoadLabel.rx_text).addDisposableTo(self.disposeBag)
             
+            self.assassinViewModel.currentWeaponLoad.subscribeNext({ load in
+                
+                if load == Killer.maxWeaponLoad {
+                    self.weaponReloadButton.enabled = false
+                } else {
+                    self.weaponReloadButton.enabled = true
+                }
+                
+            }).addDisposableTo(self.disposeBag)
         })
         
         self.socket.on("updateLocation", callback: { data, ack in
