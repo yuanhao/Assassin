@@ -117,6 +117,16 @@ class AssassinViewController: UIViewController {
                     self.victimMapAnnotations[victimSocketId] = victimMapAnnoation
                     self.mapView.addAnnotation(victimMapAnnoation)
                 }
+                
+                // notify the assassin for hunting if a victim enter the range (50 meters)
+                if UIApplication.sharedApplication().applicationState != .Active {
+                    if self.locationManager.location?.distanceFromLocation(newLocation) < 50 {
+                        let notification = UILocalNotification()
+                        notification.alertBody = "Hunting time."
+                        notification.soundName = "Default"
+                        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+                    }
+                }
             }
             
         })
