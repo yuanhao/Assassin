@@ -99,6 +99,37 @@ class AssassinViewController: UIViewController {
             
         }).addDisposableTo(self.disposeBag)
         
+        self.locationManager.rx_didUpdateLocations.subscribeNext({ locations in
+            
+            if self.assassinViewModel != nil && locations.count > 0 {
+                if let locationObj = self.assassinViewModel.model.location.value,
+
+                   let newLocation = locations.first {
+                    if locationObj.coordinate != newLocation.coordinate {
+                        self.assassinViewModel.model.location.value = newLocation
+                        self.socket.emit("updateLocation", [
+                            "socketId": self.socket.sid!,
+                            "lat": newLocation.coordinate.latitude,
+                            "lng": newLocation.coordinate.longitude,
+                            "isKiller": 1,
+                        ])
+                    }
+
+                } else {
+
+                    self.assassinViewModel.model.location.value = locations.first
+                    self.socket.emit("updateLocation", [
+                        "socketId": self.socket.sid!,
+                        "lat": self.assassinViewModel.model.location.value!.coordinate.latitude,
+                        "lng": self.assassinViewModel.model.location.value!.coordinate.longitude,
+                        "isKiller": 1,
+                    ])
+
+                }
+            }
+            
+        }).addDisposableTo(self.disposeBag)
+        
         self.locationManager.startUpdatingLocation()
         if let location = self.locationManager.location {
             // range 50 meters
@@ -133,6 +164,80 @@ extension AssassinViewController: MKMapViewDelegate {
             return annotationView
         }
         return nil
+    }
+    
+    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+        self.mapView.deselectAnnotation(view.annotation, animated: false)
+        
+        if self.assassinViewModel.model.weaponLoad.value <= 0 {
+            return
+        }
+        
+        guard let annotation = view.annotation as? VictimMapAnnotation else {
+            return
+        }
+        let victim = annotation.model
+        if victim.hitPoints.value <= 0 {
+            return
+        }
+        
+        guard let victimLocation = annotation.model.location.value else {
+            return
+        }
+        
+        let distance = self.locationManager.location?.distanceFromLocation(victimLocation)
+
+        let weaponAlert: UIAlertController = UIAlertController(title: "Weapon List", message: "Choose a weapon to attack. ", preferredStyle: UIAlertControllerStyle.ActionSheet)
+
+        let shurikenAction = UIAlertAction(title: "Shuriken (\(Shuriken.range)m)", style: UIAlertActionStyle.Default, handler: { alert in
+            self.assassinViewModel.model.weapon = Shuriken()
+            self.assassinViewModel.model.attack(victim)
+            if victim.hitPoints.value <= 0 {
+                if let av = self.mapView.viewForAnnotation(annotation) {
+                    av.image = UIImage(named: "VictimDeadPin")
+                }
+            }
+        })
+        let pistolAction = UIAlertAction(title: "Pistol (\(Pistol.range)m)", style: UIAlertActionStyle.Default, handler: { alert in
+            self.assassinViewModel.model.weapon = Pistol()
+            self.assassinViewModel.model.attack(victim)
+            if victim.hitPoints.value <= 0 {
+                if let av = self.mapView.viewForAnnotation(annotation) {
+                    av.image = UIImage(named: "VictimDeadPin")
+                }
+            }
+        })
+        let shotgunAction = UIAlertAction(title: "Shotgun (\(Shotgun.range)m)", style: UIAlertActionStyle.Default, handler: { alert in
+            self.assassinViewModel.model.weapon = Shotgun()
+            self.assassinViewModel.model.attack(victim)
+            if victim.hitPoints.value <= 0 {
+                if let av = self.mapView.viewForAnnotation(annotation) {
+                    av.image = UIImage(named: "VictimDeadPin")
+                }
+            }
+        })
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: {
+            (alert: UIAlertAction) in
+        })
+        
+        if distance > Shuriken.range {
+            shurikenAction.enabled = false
+        }
+        
+        if distance > Pistol.range {
+            pistolAction.enabled = false
+        }
+        
+        if distance > Shotgun.range {
+            shotgunAction.enabled = false
+        }
+        
+        weaponAlert.addAction(shurikenAction)
+        weaponAlert.addAction(pistolAction)
+        weaponAlert.addAction(shotgunAction)
+        weaponAlert.addAction(cancelAction)
+        
+        self.presentViewController(weaponAlert, animated: true, completion: nil)
     }
 }
 
