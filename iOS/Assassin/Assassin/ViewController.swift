@@ -15,7 +15,10 @@ class VictimViewController: UIViewController {
     @IBOutlet weak var victimStatusImage: UIImageView!
     @IBOutlet weak var victimHPLabel: UILabel!
     
+    let disposeBag = DisposeBag()
+
     var socket: SocketIOClient!
+    var victimViewModel: VictimViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +36,21 @@ class VictimViewController: UIViewController {
             print(data)
             print(ack)
             print(self.socket.sid)
+            
+            // create our victim model
+            let model = Victim(socketId: self.socket.sid!)
+            self.victimViewModel = VictimViewModel(model: model)
+            
+            // connect our victim view model with our view
+            self.victimViewModel.currentHPPercent.bindTo(self.victimHPLabel.rx_text).addDisposableTo(self.disposeBag)
+
+            self.victimViewModel.aliveStatus.map({
+                $0.stateImage()
+            }).bindTo(self.victimStatusImage.rx_image).addDisposableTo(self.disposeBag)
+            
+            
+            self.victimViewModel.model.hitPoints.value = 1
+            
         })
         
         self.socket.connect()
