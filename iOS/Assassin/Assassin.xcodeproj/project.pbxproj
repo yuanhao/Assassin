@@ -37,6 +37,7 @@
 		EF8B581F1BFA282500A948DE /* SocketTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B580C1BFA282500A948DE /* SocketTypes.swift */; };
 		EF8B58201BFA282500A948DE /* SwiftRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B580D1BFA282500A948DE /* SwiftRegex.swift */; };
 		EF8B58211BFA282500A948DE /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B580E1BFA282500A948DE /* WebSocket.swift */; };
+		EF8B58231BFA2CC300A948DE /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B58221BFA2CC300A948DE /* Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -203,6 +204,7 @@
 		EF8B580C1BFA282500A948DE /* SocketTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketTypes.swift; sourceTree = "<group>"; };
 		EF8B580D1BFA282500A948DE /* SwiftRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftRegex.swift; sourceTree = "<group>"; };
 		EF8B580E1BFA282500A948DE /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
+		EF8B58221BFA2CC300A948DE /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +264,7 @@
 				EF8B57751BFA25CE00A948DE /* Assets.xcassets */,
 				EF8B57771BFA25CE00A948DE /* LaunchScreen.storyboard */,
 				EF8B577A1BFA25CE00A948DE /* Info.plist */,
+				EF8B58221BFA2CC300A948DE /* Models.swift */,
 			);
 			path = Assassin;
 			sourceTree = "<group>";
@@ -576,6 +579,7 @@
 				EF8B58121BFA282500A948DE /* SocketEngine.swift in Sources */,
 				EF8B58151BFA282500A948DE /* SocketEngineSpec.swift in Sources */,
 				EF8B58111BFA282500A948DE /* SocketAnyEvent.swift in Sources */,
+				EF8B58231BFA2CC300A948DE /* Models.swift in Sources */,
 				EF8B58101BFA282500A948DE /* SocketAckManager.swift in Sources */,
 				EF8B581A1BFA282500A948DE /* SocketIOClientStatus.swift in Sources */,
 				EF8B58211BFA282500A948DE /* WebSocket.swift in Sources */,
