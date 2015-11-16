@@ -23,6 +23,24 @@ io.on('connection', function(socket) {
         console.log('Player disconnected');
     });
 
+    socket.on('updateLocation', function(msg) {
+        console.log("Update Location: " + msg['socketId']);
+        console.log("Lat: " + msg['lat'] + ", Lng: " + msg['lng'] + "\n\n");
+        var playerSID = msg['socketId'];
+        var playerIsKiller = msg['isKiller'];
+        var playerLat = msg['lat'];
+        var playerLng = msg['lng'];
+
+        if (playerIsKiller  == "0") {
+            io.emit('updateLocation', msg);
+        }
+
+        // Update to Redis datastore
+        client.hmset("players", [playerSID, ' { "isKiller": "' + playerIsKiller + '", "lat": "' + playerLat + '", "lng": "' + playerLng + '" }'], function(e, r) {
+            console.log(r);
+        });
+    });
+
 });
 
 http.listen(3001, function() {
