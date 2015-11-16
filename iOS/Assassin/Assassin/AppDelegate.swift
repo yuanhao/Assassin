@@ -15,7 +15,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.window!.backgroundColor = UIColor.clearColor()
+        
+        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        let rootViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("AssassinVC") as! AssassinViewController
+        
+        self.window!.rootViewController = rootViewController
+        print("Killer")
+    
         return true
     }
 
