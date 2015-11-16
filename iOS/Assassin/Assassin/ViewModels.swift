@@ -35,7 +35,9 @@ class VictimViewModel {
     
     var model: Victim {
         didSet {
-            self.currentHPPercent.onNext("\(self.model.hitPoints.value / Victim.maxHitPoints * 100)%")
+            let percentStr = NSString(format: "%.1f%%", self.model.hitPoints.value / Victim.maxHitPoints * 100)
+            self.currentHPPercent.onNext(percentStr as String)
+
             if self.model.hitPoints.value > 0 {
                 self.aliveStatus.onNext(VictimAliveStatus.ALIVE)
             } else {
@@ -51,7 +53,9 @@ class VictimViewModel {
     
     func bindModel() {
         self.model.hitPoints.subscribeNext({ newHP in
-            self.currentHPPercent.onNext("\(self.model.hitPoints.value / Victim.maxHitPoints * 100)%")
+            let percentStr = NSString(format: "%.1f%%", self.model.hitPoints.value / Victim.maxHitPoints * 100)
+            self.currentHPPercent.onNext(percentStr as String)
+
             if newHP > 0 {
                 self.aliveStatus.onNext(VictimAliveStatus.ALIVE)
             } else {
