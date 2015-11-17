@@ -30,12 +30,17 @@ class AssassinViewController: UIViewController {
     var blePeripherals: [String: CBPeripheral] = [String: CBPeripheral]()
     var huntingTimer: NSTimer!
     var huntingTime: Int = 120
+    
+    // movable dummy victim
+    var movingDummyCreated: Bool = false
+    var movingDummy: Victim!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initViews()
         self.setupSocketIO()
         self.setupLocationManager()
+        //self.createDummyVictims()
         self.setupBluetooth()
     }
 
@@ -90,6 +95,23 @@ class AssassinViewController: UIViewController {
             
             alert.addAction(okAction)
             self.presentViewController(alert, animated: true, completion:{})
+        }
+        
+        
+        // moving dummy
+        if let dummy = self.movingDummy {
+            let oldLoc = dummy.location.value!
+            var distance: Double
+            var angle: Double
+            if self.huntingTime / 20 % 2 == 1 {
+                distance = 1
+                angle = 5.0
+            } else {
+                distance = -1
+                angle = -5.0
+            }
+            
+            dummy.location.value = locationForAngle(angle, center: oldLoc, distance: distance)
         }
     }
 
@@ -161,6 +183,23 @@ class AssassinViewController: UIViewController {
         self.socket.connect()
     }
     
+    func createDummy(sid: String, loc: CLLocation) {
+        let victim = Victim(socketId: sid)
+        victim.location.value = loc
+        let victimMapAnnoation = VictimMapAnnotation(model: victim)
+        self.victimMapAnnotations[sid] = victimMapAnnoation
+        self.mapView.addAnnotation(victimMapAnnoation)
+    }
+
+    func createDummyVictims() {
+
+        self.createDummy("dummy1", loc: CLLocation(latitude: 48.704615, longitude: 8.999059))
+        self.createDummy("dummy2", loc: CLLocation(latitude: 52.498565, longitude: 13.383556))
+        self.createDummy("dummy3", loc: CLLocation(latitude: 52.536827, longitude: 13.394861))
+
+    }
+    
+    
     func setupLocationManager() {
         self.locationManager.requestAlwaysAuthorization()
 
@@ -204,6 +243,18 @@ class AssassinViewController: UIViewController {
                         "lng": self.assassinViewModel.model.location.value!.coordinate.longitude,
                         "isKiller": 1,
                     ])
+                    
+                    // creating moving dummy
+                    if self.movingDummyCreated == false {
+                        
+                        self.movingDummy = Victim(socketId: "movingDummy")
+                        self.movingDummy.location.value = locations.first
+                        let victimMapAnnoation = VictimMapAnnotation(model: self.movingDummy)
+                        self.victimMapAnnotations["movingDummy"] = victimMapAnnoation
+                        self.mapView.addAnnotation(victimMapAnnoation)
+                        
+                        self.movingDummyCreated = true
+                    }
 
                 }
             }
@@ -355,3 +406,16 @@ extension AssassinViewController: CBCentralManagerDelegate {
 }
 
 
+func locationForAngle(angle: Double, center: CLLocation, distance: Double) -> CLLocation {
+    let center = center.coordinate
+    let distRadians = distance / (6372797.6)
+    let rbearing = angle * M_PI / 180.0
+    
+    let lat1 = center.latitude * M_PI / 180
+    let lon1 = center.longitude * M_PI / 180
+    
+    let lat2 = asin(sin(lat1) * cos(distRadians) + cos(lat1) * sin(distRadians) * cos(rbearing))
+    let lon2 = lon1 + atan2(sin(rbearing) * sin(distRadians) * cos(lat1), cos(distRadians) - sin(lat1) * sin(lat2))
+    
+    return CLLocation(latitude: lat2 * 180 / M_PI, longitude: lon2 * 180 / M_PI)
+}
