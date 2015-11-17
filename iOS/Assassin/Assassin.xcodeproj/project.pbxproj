@@ -834,6 +834,7 @@
 				EF8B57951BFA25CF00A948DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EF8B57961BFA25CF00A948DE /* Build configuration list for PBXNativeTarget "AssassinTests" */ = {
 			isa = XCConfigurationList;
@@ -842,6 +843,7 @@
 				EF8B57981BFA25CF00A948DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EF8B57991BFA25CF00A948DE /* Build configuration list for PBXNativeTarget "AssassinUITests" */ = {
 			isa = XCConfigurationList;
@@ -850,6 +852,7 @@
 				EF8B579B1BFA25CF00A948DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

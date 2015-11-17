@@ -92,7 +92,7 @@ class VictimViewController: UIViewController {
         self.socket.on("damage", callback: { data, ack in
             if data.count > 0 {
                 if let socketId = data[0]["socketId"] as? String {
-                    let damage = (data[0]["newHP"] as! NSString).doubleValue
+                    let damage = (data[0]["newHP"] as! NSNumber).doubleValue
                     if socketId == self.socket.sid {
                         self.victimViewModel.model.hitPoints.value = damage
                         AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)

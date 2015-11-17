@@ -119,8 +119,8 @@ class AssassinViewController: UIViewController {
         self.socket.on("updateLocation", callback: { data, ack in
             if data.count > 0 {
                 let victimSocketId = data[0]["socketId"] as! String
-                let victimLat = (data[0]["lat"] as! NSString).doubleValue
-                let victimLng = (data[0]["lng"] as! NSString).doubleValue
+                let victimLat = (data[0]["lat"] as! NSNumber).doubleValue
+                let victimLng = (data[0]["lng"] as! NSNumber).doubleValue
                 let newLocation = CLLocation(latitude: victimLat, longitude: victimLng)
                 
                 if let victimMapAnnotation = self.victimMapAnnotations[victimSocketId] {
