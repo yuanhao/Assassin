@@ -93,7 +93,8 @@ class VictimViewController: UIViewController {
             if data.count > 0 {
                 if let socketId = data[0]["socketId"] as? String {
                     let damage = (data[0]["newHP"] as! NSNumber).doubleValue
-                    if socketId == self.socket.sid {
+
+                    if socketId == self.socket.sid && damage < Victim.maxHitPoints {
                         self.victimViewModel.model.hitPoints.value = damage
                         AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
                         
@@ -129,6 +130,15 @@ class VictimViewController: UIViewController {
             print("rx_didUpdateLocations: \(locations)")
 
             if self.victimViewModel != nil && locations.count > 0 {
+                self.victimViewModel.model.location.value = locations.first
+                self.socket.emit("updateLocation", [
+                    "socketId": self.socket.sid!,
+                    "lat": self.victimViewModel.model.location.value!.coordinate.latitude,
+                    "lng": self.victimViewModel.model.location.value!.coordinate.longitude,
+                    "isKiller": 0,
+                    ])
+
+                /*
                 if let oldLocation = self.victimViewModel.model.location.value,
                    let newLocation = locations.first {
                     if oldLocation.coordinate != newLocation.coordinate {
@@ -149,6 +159,7 @@ class VictimViewController: UIViewController {
                         "isKiller": 0,
                         ])
                 }
+                */
             }
             
         }).addDisposableTo(self.disposeBag)
