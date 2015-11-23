@@ -1,5 +1,5 @@
 //
-//  Manager.swift
+//  VictimManager.swift
 //  Assassin
 //
 //  Created by Yuanhao Li on 22/11/15.
@@ -14,12 +14,12 @@ import CoreLocation
 import AudioToolbox
 
 
-class VictimManager: NSObject, SocketManagerDelegate {
+class VictimManager: NSObject {
     let disposeBag = DisposeBag()
+    var controller: VictimViewController
     var victimViewModel: VictimViewModel!
     var socketManager: SocketManager!
     let locationManager = CLLocationManager()
-    var controller: VictimViewController
     
     init(controller: VictimViewController) {
         self.controller = controller
@@ -27,41 +27,12 @@ class VictimManager: NSObject, SocketManagerDelegate {
         super.init()
 
         self.initSocketManager()
-        self.initLocationManager()
-        
+        self.initLocationManager()        
     }
     
     func initSocketManager() {
         let socket = SocketIOClient(socketURL: "46.101.187.63:3001", options: [.Log(true), .ForcePolling(true)])
         self.socketManager = SocketManager(socket: socket, delegate: self)
-    }
-    
-    func message(socket: SocketIOClient, onConnect data: AnyObject, ack: SocketAckEmitter?) {
-
-        let model = Victim(socketId: socket.sid!)
-        self.victimViewModel = VictimViewModel(model: model)
-        self.victimViewModel.currentHPPercent.bindTo(self.controller.victimHPLabel.rx_text).addDisposableTo(self.disposeBag)
-        self.victimViewModel.aliveStatus.map({
-            $0.stateImage()
-        }).bindTo(self.controller.victimStatusImage.rx_image).addDisposableTo(self.disposeBag)
-        
-        self.victimViewModel.aliveStatus.subscribeNext({ status in
-            if status == VictimAliveStatus.DEAD {
-                self.showGameOverAlert(socket)
-            }
-        }).addDisposableTo(self.disposeBag)
-    }
-    
-    func message(socket: SocketIOClient, onDamage data: AnyObject, ack: SocketAckEmitter?) {
-        if let socketId = data["socketId"] as? String {
-            let damage = (data["newHP"] as! NSNumber).doubleValue
-            
-            if socketId == socket.sid && damage < Victim.maxHitPoints {
-                self.victimViewModel.model.hitPoints.value = damage
-                AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
-                self.controller.flashDamageWarning()
-            }
-        }
     }
     
     func showGameOverAlert(socket: SocketIOClient) {
@@ -115,7 +86,34 @@ class VictimManager: NSObject, SocketManagerDelegate {
 }
 
 
-func != (left: CLLocationCoordinate2D, right: CLLocationCoordinate2D) -> Bool {
-    return left.latitude != right.latitude || left.longitude != right.longitude
+extension VictimManager: SocketManagerDelegate {
+    func message(socket: SocketIOClient, onConnect data: AnyObject, ack: SocketAckEmitter?) {
+        
+        let model = Victim(socketId: socket.sid!)
+        self.victimViewModel = VictimViewModel(model: model)
+        self.victimViewModel.currentHPPercent.bindTo(self.controller.victimHPLabel.rx_text).addDisposableTo(self.disposeBag)
+        self.victimViewModel.aliveStatus.map({
+            $0.stateImage()
+        }).bindTo(self.controller.victimStatusImage.rx_image).addDisposableTo(self.disposeBag)
+        
+        self.victimViewModel.aliveStatus.subscribeNext({ status in
+            if status == VictimAliveStatus.DEAD {
+                self.showGameOverAlert(socket)
+            }
+        }).addDisposableTo(self.disposeBag)
+    }
+    
+    func message(socket: SocketIOClient, onDamage data: AnyObject, ack: SocketAckEmitter?) {
+        if let socketId = data["socketId"] as? String {
+            let damage = (data["newHP"] as! NSNumber).doubleValue
+            
+            if socketId == socket.sid && damage < Victim.maxHitPoints {
+                self.victimViewModel.model.hitPoints.value = damage
+                AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
+                self.controller.flashDamageWarning()
+            }
+        }
+    }
+    
+    func message(socket: SocketIOClient, onUpdateLocation data: AnyObject, ack: SocketAckEmitter?) {}
 }
-

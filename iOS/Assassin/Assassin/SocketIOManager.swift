@@ -10,6 +10,7 @@
 protocol SocketManagerDelegate {
     func message(socket: SocketIOClient, onConnect data: AnyObject, ack: SocketAckEmitter?)
     func message(socket: SocketIOClient, onDamage data: AnyObject, ack: SocketAckEmitter?)
+    func message(socket: SocketIOClient, onUpdateLocation data: AnyObject, ack: SocketAckEmitter?)
 }
 
 
@@ -31,6 +32,12 @@ class SocketManager {
         self.socket.on("damage", callback: { data, ack in
             if let data: AnyObject = data[0] {
                 self.delegate.message(self.socket, onDamage: data, ack: ack)
+            }
+        })
+        
+        self.socket.on("updateLocation", callback: { data, ack in
+            if let data: AnyObject = data[0] {
+                self.delegate.message(self.socket, onUpdateLocation: data, ack: ack)
             }
         })
         

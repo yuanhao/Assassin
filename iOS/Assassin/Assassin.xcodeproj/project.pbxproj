@@ -41,7 +41,9 @@
 		EF8B58251BFA2E9A00A948DE /* ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B58241BFA2E9A00A948DE /* ViewModels.swift */; };
 		EF8B58291BFA474C00A948DE /* AssassinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B58281BFA474C00A948DE /* AssassinViewController.swift */; };
 		EFDC84481C023E8F00A522D1 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDC84471C023E8F00A522D1 /* SocketIOManager.swift */; };
-		EFDC84541C02600F00A522D1 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDC84531C02600F00A522D1 /* Manager.swift */; };
+		EFDC84541C02600F00A522D1 /* VictimManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDC84531C02600F00A522D1 /* VictimManager.swift */; };
+		EFDC84561C0327DB00A522D1 /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDC84551C0327DB00A522D1 /* Operator.swift */; };
+		EFDC84581C03282200A522D1 /* AssassinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDC84571C03282200A522D1 /* AssassinManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,7 +214,9 @@
 		EF8B58241BFA2E9A00A948DE /* ViewModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModels.swift; sourceTree = "<group>"; };
 		EF8B58281BFA474C00A948DE /* AssassinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssassinViewController.swift; sourceTree = "<group>"; };
 		EFDC84471C023E8F00A522D1 /* SocketIOManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
-		EFDC84531C02600F00A522D1 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		EFDC84531C02600F00A522D1 /* VictimManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VictimManager.swift; sourceTree = "<group>"; };
+		EFDC84551C0327DB00A522D1 /* Operator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operator.swift; sourceTree = "<group>"; };
+		EFDC84571C03282200A522D1 /* AssassinManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssassinManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,7 +280,9 @@
 				EF8B58241BFA2E9A00A948DE /* ViewModels.swift */,
 				EF8B58281BFA474C00A948DE /* AssassinViewController.swift */,
 				EFDC84471C023E8F00A522D1 /* SocketIOManager.swift */,
-				EFDC84531C02600F00A522D1 /* Manager.swift */,
+				EFDC84531C02600F00A522D1 /* VictimManager.swift */,
+				EFDC84551C0327DB00A522D1 /* Operator.swift */,
+				EFDC84571C03282200A522D1 /* AssassinManager.swift */,
 			);
 			path = Assassin;
 			sourceTree = "<group>";
@@ -587,8 +593,9 @@
 				EF8B581D1BFA282500A948DE /* SocketParser.swift in Sources */,
 				EF8B58161BFA282500A948DE /* SocketEventHandler.swift in Sources */,
 				EF8B581E1BFA282500A948DE /* SocketStringReader.swift in Sources */,
+				EFDC84561C0327DB00A522D1 /* Operator.swift in Sources */,
 				EF8B58201BFA282500A948DE /* SwiftRegex.swift in Sources */,
-				EFDC84541C02600F00A522D1 /* Manager.swift in Sources */,
+				EFDC84541C02600F00A522D1 /* VictimManager.swift in Sources */,
 				EF8B58121BFA282500A948DE /* SocketEngine.swift in Sources */,
 				EF8B58151BFA282500A948DE /* SocketEngineSpec.swift in Sources */,
 				EF8B58111BFA282500A948DE /* SocketAnyEvent.swift in Sources */,
@@ -603,6 +610,7 @@
 				EF8B58191BFA282500A948DE /* SocketIOClientOption.swift in Sources */,
 				EF8B58251BFA2E9A00A948DE /* ViewModels.swift in Sources */,
 				EFDC84481C023E8F00A522D1 /* SocketIOManager.swift in Sources */,
+				EFDC84581C03282200A522D1 /* AssassinManager.swift in Sources */,
 				EF8B581F1BFA282500A948DE /* SocketTypes.swift in Sources */,
 				EF8B581C1BFA282500A948DE /* SocketPacket.swift in Sources */,
 				EF8B576F1BFA25CE00A948DE /* AppDelegate.swift in Sources */,

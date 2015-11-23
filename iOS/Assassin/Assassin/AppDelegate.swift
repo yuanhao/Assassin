@@ -27,14 +27,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
 
+        /*
         if arc4random_uniform(2) == 0 {
             let rootViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("VictimVC") as! VictimViewController
             self.window!.rootViewController = rootViewController
         } else {
             let rootViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("AssassinVC") as! AssassinViewController
             self.window!.rootViewController = rootViewController
-        }
+        }*/
         
+        let rootViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("AssassinVC") as! AssassinViewController
+        self.window!.rootViewController = rootViewController
+
         self.window!.makeKeyAndVisible()
 
         return true
