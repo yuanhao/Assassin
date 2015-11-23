@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EF8B576F1BFA25CE00A948DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B576E1BFA25CE00A948DE /* AppDelegate.swift */; };
-		EF8B57711BFA25CE00A948DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B57701BFA25CE00A948DE /* ViewController.swift */; };
+		EF8B57711BFA25CE00A948DE /* VictimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B57701BFA25CE00A948DE /* VictimViewController.swift */; };
 		EF8B57741BFA25CE00A948DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF8B57721BFA25CE00A948DE /* Main.storyboard */; };
 		EF8B57761BFA25CE00A948DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF8B57751BFA25CE00A948DE /* Assets.xcassets */; };
 		EF8B57791BFA25CE00A948DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF8B57771BFA25CE00A948DE /* LaunchScreen.storyboard */; };
@@ -40,6 +40,8 @@
 		EF8B58231BFA2CC300A948DE /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B58221BFA2CC300A948DE /* Models.swift */; };
 		EF8B58251BFA2E9A00A948DE /* ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B58241BFA2E9A00A948DE /* ViewModels.swift */; };
 		EF8B58291BFA474C00A948DE /* AssassinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B58281BFA474C00A948DE /* AssassinViewController.swift */; };
+		EFDC84481C023E8F00A522D1 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDC84471C023E8F00A522D1 /* SocketIOManager.swift */; };
+		EFDC84541C02600F00A522D1 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDC84531C02600F00A522D1 /* Manager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,7 +177,7 @@
 /* Begin PBXFileReference section */
 		EF8B576B1BFA25CE00A948DE /* Assassin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assassin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF8B576E1BFA25CE00A948DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EF8B57701BFA25CE00A948DE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EF8B57701BFA25CE00A948DE /* VictimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VictimViewController.swift; sourceTree = "<group>"; };
 		EF8B57731BFA25CE00A948DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EF8B57751BFA25CE00A948DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EF8B57781BFA25CE00A948DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -209,6 +211,8 @@
 		EF8B58221BFA2CC300A948DE /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		EF8B58241BFA2E9A00A948DE /* ViewModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModels.swift; sourceTree = "<group>"; };
 		EF8B58281BFA474C00A948DE /* AssassinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssassinViewController.swift; sourceTree = "<group>"; };
+		EFDC84471C023E8F00A522D1 /* SocketIOManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
+		EFDC84531C02600F00A522D1 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,7 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				EF8B576E1BFA25CE00A948DE /* AppDelegate.swift */,
-				EF8B57701BFA25CE00A948DE /* ViewController.swift */,
+				EF8B57701BFA25CE00A948DE /* VictimViewController.swift */,
 				EF8B57721BFA25CE00A948DE /* Main.storyboard */,
 				EF8B57751BFA25CE00A948DE /* Assets.xcassets */,
 				EF8B57771BFA25CE00A948DE /* LaunchScreen.storyboard */,
@@ -271,6 +275,8 @@
 				EF8B58221BFA2CC300A948DE /* Models.swift */,
 				EF8B58241BFA2E9A00A948DE /* ViewModels.swift */,
 				EF8B58281BFA474C00A948DE /* AssassinViewController.swift */,
+				EFDC84471C023E8F00A522D1 /* SocketIOManager.swift */,
+				EFDC84531C02600F00A522D1 /* Manager.swift */,
 			);
 			path = Assassin;
 			sourceTree = "<group>";
@@ -582,6 +588,7 @@
 				EF8B58161BFA282500A948DE /* SocketEventHandler.swift in Sources */,
 				EF8B581E1BFA282500A948DE /* SocketStringReader.swift in Sources */,
 				EF8B58201BFA282500A948DE /* SwiftRegex.swift in Sources */,
+				EFDC84541C02600F00A522D1 /* Manager.swift in Sources */,
 				EF8B58121BFA282500A948DE /* SocketEngine.swift in Sources */,
 				EF8B58151BFA282500A948DE /* SocketEngineSpec.swift in Sources */,
 				EF8B58111BFA282500A948DE /* SocketAnyEvent.swift in Sources */,
@@ -592,9 +599,10 @@
 				EF8B58211BFA282500A948DE /* WebSocket.swift in Sources */,
 				EF8B580F1BFA282500A948DE /* SocketAckEmitter.swift in Sources */,
 				EF8B581B1BFA282500A948DE /* SocketLogger.swift in Sources */,
-				EF8B57711BFA25CE00A948DE /* ViewController.swift in Sources */,
+				EF8B57711BFA25CE00A948DE /* VictimViewController.swift in Sources */,
 				EF8B58191BFA282500A948DE /* SocketIOClientOption.swift in Sources */,
 				EF8B58251BFA2E9A00A948DE /* ViewModels.swift in Sources */,
+				EFDC84481C023E8F00A522D1 /* SocketIOManager.swift in Sources */,
 				EF8B581F1BFA282500A948DE /* SocketTypes.swift in Sources */,
 				EF8B581C1BFA282500A948DE /* SocketPacket.swift in Sources */,
 				EF8B576F1BFA25CE00A948DE /* AppDelegate.swift in Sources */,
